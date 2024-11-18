@@ -26,8 +26,8 @@ Senior Software Engineer passionate about building scalable solutions with exper
 
 ## 📫 How to reach me
 
-[![Email](https://img.shields.io/badge/-Email-D14836?style=flat&logo=Gmail&logoColor=white)](mailto:maclong9@icloud.com)
-<!-- [![Portfolio](https://img.shields.io/badge/-Portfolio-000000?style=flat&logo=About.me&logoColor=white)](https://maclong.tech) -->
+[![Email](https://img.shields.io/badge/-Email-0099CC?style=flat&logo=Mail.Ru&logoColor=white)](mailto:maclong9@icloud.com)
+[![Blog](https://img.shields.io/badge/-Blog-000000?style=flat&logo=Safari&logoColor=white)](https://maclong.tech)
 
 ## 🎯 Goals for 2025
 
