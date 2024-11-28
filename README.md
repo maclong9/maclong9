@@ -13,7 +13,6 @@ Senior Software Engineer passionate about building scalable solutions with exper
 - iOS application development with Swift
 - Full-stack web applications using Swift, TypeScript and React
 - Automation scripts using POSIX Shell
-- Containerized development environments with Docker
 
 ## 📈 GitHub Stats
 
