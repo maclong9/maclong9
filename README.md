@@ -7,8 +7,6 @@ Senior Software Engineer passionate about building scalable solutions with exper
 ![Shell](https://img.shields.io/badge/-Shell-4EAA25?style=flat&logo=GNU-Bash&logoColor=white)
 ![Swift](https://img.shields.io/badge/-Swift-FA7343?style=flat&logo=Swift&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white)
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black)
-![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
 ## 🔭 I'm currently working on
 
