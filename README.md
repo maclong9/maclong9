@@ -11,7 +11,7 @@ Senior Software Engineer passionate about building scalable solutions with exper
 ## 🔭 I'm currently working on
 
 - iOS application development with Swift
-- Full-stack web applications using Swift, TypeScript and React
+- Full-stack web applications using Swift, TypeScript, Nuxt.js and Vue
 - Automation scripts using POSIX Shell
 
 ## 📈 GitHub Stats
