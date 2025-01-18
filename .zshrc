@@ -1,6 +1,8 @@
+# Set a custom prompt
 export PROMPT="%F{white}%n %B%F{brightwhite}%~
 %F{%(?.blue.red)}%Bλ%b%f "
 
+# Initialize advanced auto-completion
 autoload -Uz compinit
 compinit
 
@@ -11,9 +13,16 @@ alias hg="history | grep"
 alias sf="swift format --recursive --in-place"
 alias mkdir="mkdir -p"
 
-# Kill Port
-kp() { 
-    kill -9 $(lsof -ti tcp:$1); 
+# Kill Ports
+kp() {
+    for port in $@; do
+        local pids=$(lsof -ti tcp:$port)
+        if [[ -n $pids ]]; then
+            kill -9 $pids && echo "Killed process(es) on port $port"
+        else
+            echo "No process found on port $port"
+        fi
+    done
 }
 
 # Run `npx` with Deno
@@ -31,15 +40,6 @@ vs() {
         vim +Obsession
 }
 
-# Create New SvelteKit Project
-cs() {
-    local tmp_file=$(mktemp)
-    curl -Ss https://gist.githubusercontent.com/maclong9/de559a23c06949a8c95e548112a6567f/raw/df8f07bb1f3b7ef36779ac62523a7af3294b65fb/create-sveltekit.sh > "$tmp_file"
-    chmod +x "$tmp_file"
-    "$tmp_file" "$1"
-    rm "$tmp_file"
-}
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Configure Deno
+if [[ ":$FPATH:" != *":/Users/maclong/.zsh/completions:"* ]]; then export FPATH="/Users/maclong/.zsh/completions:$FPATH"; fi
+. "/Users/maclong/.deno/env"

@@ -31,9 +31,6 @@ for o in [
 	execute $'set {o}'
 endfor
 
-# Add Line Numbers To Explorer
-autocmd FileType netrw setlocal number relativenumber
-
 # Keymaps
 for [k, v] in items({
 	# Clear Highlights From Search
@@ -111,6 +108,9 @@ colorscheme xcode
 for g in ['EndOfBuffer', 'Normal', 'NonText']
 	execute $'autocmd ColorScheme * hi {g} guibg=NONE ctermbg=NONE'
 endfor
+
+# Add Line Numbers To Explorer
+autocmd FileType netrw setlocal number relativenumber
 
 # Auto Format on Save
 autocmd  BufWritePre * LspDocumentFormat 

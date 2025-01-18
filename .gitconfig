@@ -1,6 +1,6 @@
 [user]
   email = "maclong9@icloud.com"
-  name = "Mac"
+  name = Mac Long
 
 [alias]
   a = "add"
@@ -48,7 +48,13 @@
   excludeFile = "$HOME/.gitignore"
 
 [init]
-	defaultBranch = "main"
+  defaultBranch = "main"
 
 [push]
   autoSetupRemote = true
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
