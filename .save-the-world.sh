@@ -1,27 +1,26 @@
 #!/bin/sh
 
-# Function to run the curl command for the first URL
-curl_task_1() {
-  for i in $(seq 1 100); do
-    curl -s "https://www.ecosia.org/search?q=what+we+do+in+the+shadows&tts=st_asaf_iphone" > /dev/null
-    echo "Task 1 - Count: $i"
-    sleep 5
-  done
+# Run curl requests in parallel for multiple URLs
+run_curl() {
+    url=$1
+    task_num=$2
+    for i in $(seq 1 100); do
+        curl -s "$url" > /dev/null
+        echo "Task $task_num - Count: $i"
+        sleep 5
+    done
 }
 
-# Function to run the curl command for the second URL
-curl_task_2() {
-  for i in $(seq 1 100); do
-    curl -s "https://oceanhero.today/web?q=maclong9%2Fdots" > /dev/null
-    echo "Task 2 - Count: $i"
-    sleep 5
-  done
-}
+# URLs to process
+urls="https://www.ecosia.org/search?q=maclong9%2Fdots
+https://oceanhero.today/web?q=maclong9%2Fdots"
 
-# Run both tasks in the background
-curl_task_1 & 
-curl_task_2 &
+# Launch parallel tasks
+task_num=1
+echo "$urls" | while read -r url; do
+    run_curl "$url" "$task_num" &
+    task_num=$((task_num + 1))
+done
 
-# Wait for both tasks to finish
+# Wait for all background tasks to complete
 wait
-
