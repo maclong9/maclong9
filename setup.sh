@@ -33,7 +33,7 @@ for file in .config/.*; do
 done
 
 # Setup Developer Tooling
-curl -fsSL https://deno.land/install.sh | sh -- -y
+curl -fsSL https://deno.land/install.sh | sh
 
 # Setup Cron Tasks
 (crontab -l 2>/dev/null; echo "0 10 * * * $HOME/.save-the-world.sh") | crontab -
