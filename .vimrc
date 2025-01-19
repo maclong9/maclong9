@@ -56,17 +56,6 @@ for [k, v] in items({
 	'<leader>c': '<cmd>Commits<cr>',
 	'<leader>m': '<cmd>Maps<cr>',
 	'<leader>/': '<cmd>Commands<cr>',
-	# LSP
-	'<leader>a': '<plug>(lsp-code-action)',
-	'<leader>d': '<plug>(lsp-definition)',
-	'<leader>h': '<plug>(lsp-hover)',
-	'<leader>i': '<plug>(lsp-implementation)',
-	'<leader>n': '<plug>(lsp-next-diagnostic)<cr>',
-	'<leader>p': '<plug>(lsp-previous-diagnostic)<cr>',
-	'<leader>r': '<plug>(lsp-references)',
-	'<leader>R': '<plug>(lsp-rename)',
-	'<leader>s': '<plug>(lsp-document-symbol-search)',
-	'<leader>t': '<plug>(lsp-type-definition)',
 })
   execute $'nnoremap {k} {v}'
 endfor
@@ -93,11 +82,6 @@ call plug#begin()
 	Plug 'tpope/vim-sleuth' # Automatic Indentation Detection
 	Plug 'tpope/vim-surround' # Quick Edit Surrounding Pairs
 	Plug 'wellle/targets.vim' # Additional Text Objects
-	Plug 'prabirshrestha/vim-lsp' # LSP Client
-	Plug 'mattn/vim-lsp-settings' # LSP Setup
-	Plug 'prabirshrestha/asyncomplete.vim' # Autocompletion
-	Plug 'prabirshrestha/asyncomplete-lsp.vim' # LSP Autocomplete
-	Plug 'github/copilot.vim' # AI Copilot 
 	Plug 'sheerun/vim-polyglot' # Syntax Highlighting
 call plug#end()
 
@@ -111,6 +95,3 @@ endfor
 
 # Add Line Numbers To Explorer
 autocmd FileType netrw setlocal number relativenumber
-
-# Auto Format on Save
-autocmd  BufWritePre * LspDocumentFormat 
