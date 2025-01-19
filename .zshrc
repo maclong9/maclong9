@@ -26,8 +26,8 @@ kp() {
 }
 
 # Run `npx` with Deno
-nx() { 
-    deno run -A npm:$1 ${@:2}; 
+nx() {
+    deno run -A npm:$1 ${@:2};
 }
 
 # Make Directory and Navigate Into
