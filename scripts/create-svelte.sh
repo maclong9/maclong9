@@ -36,7 +36,7 @@ get_project_name() {
 
 # check if dependencies exist
 check_dependencies() {
-  commands="deno git gh curl mkdir"
+  commands="pnpm git gh curl mkdir"
   for cmd in $commands; do
     if ! command -v "$cmd" >/dev/null 2>&1; then
       echo "Error: Required command '$cmd' not found" >&2
@@ -63,27 +63,48 @@ main() {
   project_name=$(get_project_name "$1")
 
   # Create new project and initialize
-  deno run -A npm:sv create --no-install --template minimal --types ts "$project_name" || exit 1
+  pnpx sv create --no-install --template minimal --types ts "$project_name" || exit 1
   cd "$project_name" || exit 1
   git init
 
-  # Replace `npm` with `deno` and fix unused var
-  sed -i '' 's/npm/deno/g' package.json
+  # Replace `npm` with `pnpm` and fix unused var
+  sed -i '' 's/npm/pnpm/g' package.json
   sed -i '' 's/unit": "vitest"/unit": "vitest run"/g' package.json
   sed -i '' 's/text, //g' src/lib/server/db/schema.ts
 
+  # Install and setup oxc
+  pnpm install -D oxlint@latest
+
+  # Create oxc config file
+  cat >.oxc.json <<EOF
+{
+  "\$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/crates/config/schema.json",
+  "files": {
+    "include": ["src/**/*.{js,ts,svelte}"]
+  },
+  "extends": ["plugin:svelte/recommended"],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-console": "warn"
+  }
+}
+EOF
+
+  # Add oxlint script to package.json
+  sed -i '' 's/prettier --check ./oxlint/g' package.json
+
   # Setup commitlint
-  deno install -D npm:@commitlint/cli npm:@commitlint/config-conventional
+  pnpm install -D @commitlint/cli @commitlint/config-conventional
   printf "export default { extends: ['@commitlint/config-conventional'] };" >commitlint.config.js
 
-  # Setup Husky - type `A` a few times to allow during script
-  deno install -D npm:husky
-  deno run --allow-env npm:husky init
-  printf "deno run npm:commitlint --edit %s" "$1" >.husky/commit-msg
-  printf "deno run format && deno run test:unit && deno run lint && deno run check" >.husky/pre-commit
+  # Setup Husky
+  pnpm install -D husky
+  pnpx husky init
+  printf "pnpx commitlint --edit %s" "$1" >.husky/commit-msg
+  printf "pnpm run format && pnpm run lint && pnpm run test:unit && pnpm run check" >.husky/pre-commit
 
   # Initial build and format
-  deno task build && deno task format
+  pnpm build && pnpm format
 
   # Create initial commit and push
   git add .
@@ -91,13 +112,13 @@ main() {
 
 Setup development environment:
 - Configure SvelteKit as frontend framework
-- Integrate ESLint and Prettier for code quality
+- Integrate oxc for fast, modern linting
 - Configure Vitest for unit testing infrastructure
 - Install and configure TailwindCSS for styling
 - Setup commitlint to enforce conventional commit messages
 - Implement husky pre-commit hooks for automated checks"
 
-  # Create repository based on organization type
+  # Create repository based on organization type and push changes
   case "$org_type" in
   personal)
     gh repo create "$project_name" --public --remote origin --source .
@@ -106,6 +127,7 @@ Setup development environment:
     gh repo create "$project_name" --private --team wearequantum --remote origin --source .
     ;;
   esac
+  git push
 }
 
 # Execute main function with provided argument

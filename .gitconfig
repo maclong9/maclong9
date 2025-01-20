@@ -24,10 +24,12 @@
   pl = "pull"
   plr = "pull --rebase"
   pln = "pull --no-rebase"
+  rs = "git reset --hard"
   s = "status"
   sh = "show"
   st = "stash push -u"
   sr = "stash pop"
+  srs = "git stash && git reset --hard"
   rs = "restore"
   u = "reset --soft HEAD~1"
   cl = "!f() { \
