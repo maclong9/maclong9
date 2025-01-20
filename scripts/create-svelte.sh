@@ -71,6 +71,7 @@ main() {
   sed -i '' 's/npm/pnpm/g' package.json
   sed -i '' 's/unit": "vitest"/unit": "vitest run"/g' package.json
   sed -i '' 's/text, //g' src/lib/server/db/schema.ts
+  echo 'Session.vim' >> .gitignore
 
   # Install and setup oxc
   pnpm install -D oxlint@latest
