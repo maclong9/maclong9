@@ -63,36 +63,29 @@ main() {
   project_name=$(get_project_name "$1")
 
   # Create new project and initialize
-  pnpx sv create --no-install --template minimal --types ts "$project_name" || exit 1
+  pnpx sv create --no-install --no-add-ons --template minimal --types ts "$project_name" || exit 1
   cd "$project_name" || exit 1
+  pnpx sv add --no-install --no-preconditions prettier eslint vitest tailwindcss
   git init
 
   # Replace `npm` with `pnpm` and fix unused var
   sed -i '' 's/npm/pnpm/g' package.json
   sed -i '' 's/unit": "vitest"/unit": "vitest run"/g' package.json
   sed -i '' 's/text, //g' src/lib/server/db/schema.ts
-  echo 'Session.vim' >> .gitignore
 
-  # Install and setup oxc
-  pnpm install -D oxlint@latest
+  # Add to ignore and README
+  echo 'Session.vim' >>.gitignore
+  echo "
+  # SvelteKit Addons
+  You can also enable the following on a per-project basis:
+  - **drizzle**: A Typescript first SQL ORM.
+  - **lucia**: An authentication library.
+  - **paraglide**: Library for handling internationalisation.
+  - **storybook**: Story based component development tooling.
 
-  # Create oxc config file
-  cat >.oxc.json <<EOF
-{
-  "\$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/crates/config/schema.json",
-  "files": {
-    "include": ["src/**/*.{js,ts,svelte}"]
-  },
-  "extends": ["plugin:svelte/recommended"],
-  "rules": {
-    "no-unused-vars": "error",
-    "no-console": "warn"
-  }
-}
-EOF
-
-  # Add oxlint script to package.json
-  sed -i '' 's/prettier --check ./oxlint/g' package.json
+  You can do this by running the following command:
+  `pnpx sv add {addon}`
+  " >>README.md
 
   # Setup commitlint
   pnpm install -D @commitlint/cli @commitlint/config-conventional
@@ -113,7 +106,8 @@ EOF
 
 Setup development environment:
 - Configure SvelteKit as frontend framework
-- Integrate oxc for fast, modern linting
+- Setup Prettier for code formatting
+- Integrate ESLint for linting
 - Configure Vitest for unit testing infrastructure
 - Install and configure TailwindCSS for styling
 - Setup commitlint to enforce conventional commit messages
