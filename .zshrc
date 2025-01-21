@@ -12,7 +12,6 @@ alias g="git"
 alias hg="history | grep"
 alias sf="swift format --recursive --in-place"
 alias mkdir="mkdir -p"
-alias cs="~/.config/scripts/create-svelte.sh"
 
 # Kill Ports
 kp() {
@@ -44,3 +43,11 @@ vs() {
 # Configure Deno
 if [[ ":$FPATH:" != *":/Users/maclong/.zsh/completions:"* ]]; then export FPATH="/Users/maclong/.zsh/completions:$FPATH"; fi
 . "/Users/maclong/.deno/env"
+
+# pnpm
+export PNPM_HOME="/Users/maclong/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
