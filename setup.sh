@@ -41,7 +41,7 @@ echo >> /Users/maclong/.zprofile
 /opt/homebrew/bin/brew install deno helix marksman mas node zoxide && \
 /opt/homebrew/bin/brew install pnpm 
 
-pnpm setup
+/opt/homebrew/bin/pnpm setup
 /opt/homebrew/bin/pnpm i -g @tailwindcss/language-server svelteserver typescript-language-server vscode-langservers-extracted 
 mas install 1527619437 1662217862
 
