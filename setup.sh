@@ -37,10 +37,13 @@ done
 echo >> /Users/maclong/.zprofile
    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/maclong/.zprofile
    eval "$(/opt/homebrew/bin/brew shellenv)"
-/opt/homebrew/bin/brew install ghostty homerow hyperkey maccy onyx rcmd mas zoxide helix deno node marksman
-/opt/homebrew/bin/brew install pnpm
-/opt/homebrew/bin/pnpm i -g svelteserver typescript-language-server vscode-langservers-extracted @tailwindcss/language-server
-# install with mas
+/opt/homebrew/bin/brew install --cask ghostty hammerspoon homerow hyperkey onyx 
+/opt/homebrew/bin/brew install deno helix marksman mas node zoxide && \
+/opt/homebrew/bin/brew install pnpm 
+
+pnpm setup
+/opt/homebrew/bin/pnpm i -g @tailwindcss/language-server svelteserver typescript-language-server vscode-langservers-extracted 
+mas install 1527619437 1662217862
 
 # Setup Cron Tasks
 (crontab -l 2>/dev/null; echo "0 10 * * * $HOME/.save-the-world.sh") | crontab -
