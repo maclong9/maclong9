@@ -33,9 +33,10 @@ for file in .config/.*; do
 done
 
 # Setup Developer Tooling
- echo >> /Users/maclong/.zprofile
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/maclong/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo >> /Users/maclong/.zprofile
+   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/maclong/.zprofile
+   eval "$(/opt/homebrew/bin/brew shellenv)"
 /opt/homebrew/bin/brew install ghostty homerow hyperkey maccy onyx rcmd mas zoxide helix deno node marksman
 /opt/homebrew/bin/brew install pnpm
 /opt/homebrew/bin/pnpm i -g svelteserver typescript-language-server vscode-langservers-extracted @tailwindcss/language-server
