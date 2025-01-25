@@ -36,7 +36,8 @@ done
  echo >> /Users/maclong/.zprofile
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/maclong/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
-brew install ghostty homerow hyperkey maccy onyx rcmd mas zoxide helix deno node pnpm marksman
+brew install ghostty homerow hyperkey maccy onyx rcmd mas zoxide helix deno node marksman
+brew install pnpm
 pnpm i -g svelteserver typescript-language-server vscode-langservers-extracted @tailwindcss/language-server
 # install with mas
 
