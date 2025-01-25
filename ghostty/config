@@ -4,3 +4,7 @@ font-size = 11
 window-padding-x = 8
 window-padding-y = 8
 window-padding-balance = true
+background-opacity = .95
+focus-follows-mouse = true
+auto-update = download
+keybind = global:cmd+§=toggle_quick_terminal

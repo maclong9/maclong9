@@ -1,0 +1,2 @@
+inherits="tokyonight_moon"
+"ui.background" = { fg = "foreground" }
