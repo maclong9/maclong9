@@ -42,7 +42,7 @@ echo >> /Users/maclong/.zprofile
 /opt/homebrew/bin/brew install pnpm 
 
 /opt/homebrew/bin/pnpm setup
-/opt/homebrew/bin/pnpm i -g @tailwindcss/language-server svelteserver typescript-language-server vscode-langservers-extracted 
+/opt/homebrew/bin/pnpm i -g @tailwindcss/language-server svelte-language-server typescript-language-server vercel turbo vscode-langservers-extracted 
 mas install 1527619437 1662217862
 
 # Setup Cron Tasks
