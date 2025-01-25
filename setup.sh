@@ -33,7 +33,11 @@ for file in .config/.*; do
 done
 
 # Setup Developer Tooling
-curl -fsSL https://deno.land/install.sh | sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
+eval $(/opt/homebrew/bin/brew shellenv)
+brew install ghostty zoxide helix deno node pnpm marksman
+pnpm i -g svelteserver typescript-language-server vscode-langservers-extracted @tailwindcss/language-server
 
 # Setup Cron Tasks
 (crontab -l 2>/dev/null; echo "0 10 * * * $HOME/.save-the-world.sh") | crontab -
