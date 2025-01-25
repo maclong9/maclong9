@@ -7,7 +7,6 @@ auto-completion = true
 auto-save = true
 idle-timeout = 200
 completion-trigger-len = 2
-shell = [ "zsh", "-ic" ]
 
 [editor.cursor-shape]
 insert = "bar"

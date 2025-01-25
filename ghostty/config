@@ -8,3 +8,7 @@ background-opacity = .95
 focus-follows-mouse = true
 auto-update = download
 keybind = global:cmd+§=toggle_quick_terminal
+keybind = global:alt+h=goto_split:left
+keybind = global:alt+j=goto_split:bottom
+keybind = global:alt+k=goto_split:top
+keybind = global:alt+l=goto_split:right
