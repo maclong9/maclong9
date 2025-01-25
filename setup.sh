@@ -33,9 +33,9 @@ for file in .config/.*; do
 done
 
 # Setup Developer Tooling
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
-eval $(/opt/homebrew/bin/brew shellenv)
+ echo >> /Users/maclong/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/maclong/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 brew install ghostty homerow hyperkey maccy onyx rcmd mas zoxide helix deno node pnpm marksman
 pnpm i -g svelteserver typescript-language-server vscode-langservers-extracted @tailwindcss/language-server
 # install with mas
