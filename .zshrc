@@ -25,11 +25,6 @@ kp() {
   done
 }
 
-# Run `npx` with Deno
-nx() {
-  deno run -A npm:$1 ${@:2}
-}
-
 # Make Directory and Navigate Into
 mkcd() { mkdir $1 && cd $1; }
 
@@ -40,10 +35,6 @@ vs() {
     vim +Obsession
 }
 
-# Configure Deno
-if [[ ":$FPATH:" != *":/Users/maclong/.zsh/completions:"* ]]; then export FPATH="/Users/maclong/.zsh/completions:$FPATH"; fi
-. "/Users/maclong/.deno/env"
-
 # pnpm
 export PNPM_HOME="/Users/maclong/Library/pnpm"
 case ":$PATH:" in
@@ -51,3 +42,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(zoxide init zsh)"

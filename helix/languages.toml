@@ -1,0 +1,107 @@
+# Language Server Configuration
+[language-server]
+svelte = { command = "svelteserver", args = ["--stdio"] }
+typescript = { command = "typescript-language-server", args = ["--stdio"] }
+html = { command = "vscode-html-language-server", args = ["--stdio"] }
+css = { command = "vscode-css-language-server", args = ["--stdio"] }
+eslint = { command = "vscode-eslint-language-server", args = ["--stdio"] }
+tailwindcss = { command = "tailwindcss-language-server", args = ["--stdio"] }
+json = { command = "vscode-json-language-server", args = ["--stdio"] }
+markdown = { command = "marksman" }
+
+# Language Configuration
+[[language]]
+name = "svelte"
+scope = "source.svelte"
+injection-regex = "svelte"
+file-types = ["svelte"]
+roots = ["package.json", "svelte.config.{js,ts}"]
+language-servers = ["svelte", "typescript", "tailwindcss", "eslint", "typescript-svelte-plugin"]
+formatter = { command = "prettier", args = ["--parser", "svelte"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "ts"
+file-types = ["ts"]
+roots = ["tsconfig.json"]
+language-servers = ["typescript", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+injection-regex = "tsx"
+file-types = ["tsx"]
+roots = ["tsconfig.json", "next.config.js"]
+language-servers = ["react", "typescript", "tailwindcss", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+injection-regex = "js"
+file-types = ["js"]
+language-servers = ["typescript", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "javascript"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+scope = "source.jsx"
+injection-regex = "jsx"
+file-types = ["jsx"]
+roots = ["next.config.js"]
+language-servers = ["react", "typescript", "tailwindcss", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "babel"] }
+auto-format = true
+
+[[language]]
+name = "html"
+scope = "source.html"
+injection-regex = "html"
+file-types = ["html"]
+language-servers = ["html", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "css"
+scope = "source.css"
+injection-regex = "css"
+file-types = ["css"]
+language-servers = ["css", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "css"] }
+auto-format = true
+
+[[language]]
+name = "json"
+scope = "source.json"
+file-types = ["json"]
+language-servers = ["json"]
+formatter = { command = "prettier", args = ["--parser", "json"] }
+auto-format = true
+
+[[language]]
+name = "markdown"
+scope = "source.md"
+file-types = ["md"]
+language-servers = ["marksman"]
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
+auto-format = true
+
+# Prettier Configuration
+[tools.prettier]
+enable = true
+global = true
+config-path = ".prettierrc"
+
+# ESLint Configuration
+[tools.eslint]
+enable = true
+global = true
+config-path = "eslint.config.js"
+
