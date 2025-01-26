@@ -2,9 +2,6 @@
 	"name": "svelte-template",
 	"private": true,
 	"version": "0.0.1",
-	"engines": {
-		"node": ">=22.13.0"
-	},
 	"type": "module",
 	"scripts": {
 		"build": "vite build",
