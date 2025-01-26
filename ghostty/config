@@ -7,6 +7,7 @@ window-padding-balance = true
 background-opacity = .95
 focus-follows-mouse = true
 auto-update = download
+macos-option-as-alt = true
 keybind = global:cmd+§=toggle_quick_terminal
 keybind = global:alt+h=goto_split:left
 keybind = global:alt+j=goto_split:bottom
