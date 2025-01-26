@@ -1,13 +1,16 @@
 # Language Server Configuration
 [language-server]
-svelte = { command = "svelteserver", args = ["--stdio"] }
-typescript = { command = "typescript-language-server", args = ["--stdio"] }
-html = { command = "vscode-html-language-server", args = ["--stdio"] }
 css = { command = "vscode-css-language-server", args = ["--stdio"] }
+deno = { command = "deno", args = [ "lsp" ]}
+emmet-ls = { command = "emmet-ls", args = ["--stdio"] }
 eslint = { command = "vscode-eslint-language-server", args = ["--stdio"] }
-tailwindcss = { command = "tailwindcss-language-server", args = ["--stdio"] }
+html = { command = "vscode-html-language-server", args = ["--stdio"] }
 json = { command = "vscode-json-language-server", args = ["--stdio"] }
 markdown = { command = "marksman" }
+svelte = { command = "svelteserver", args = ["--stdio"] }
+tailwindcss = { command = "tailwindcss-language-server", args = ["--stdio"] }
+typescript = { command = "typescript-language-server", args = ["--stdio"] }
+
 
 # Language Configuration
 [[language]]
@@ -16,8 +19,18 @@ scope = "source.svelte"
 injection-regex = "svelte"
 file-types = ["svelte"]
 roots = ["package.json", "svelte.config.{js,ts}"]
-language-servers = ["svelte", "typescript", "tailwindcss", "eslint", "typescript-svelte-plugin"]
+language-servers = ["svelte", "typescript", "tailwindcss", "eslint", "typescript-svelte-plugin", "emmet-ls"]
 formatter = { command = "prettier", args = ["--parser", "svelte"] }
+auto-format = true
+
+[[language]]
+name = "typescript-deno"
+scope = "source.ts"
+injection-regex = "ts"
+file-types = ["ts"]
+roots = ["deno.lock"]
+language-servers = ["deno", "eslint"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
@@ -25,7 +38,7 @@ name = "typescript"
 scope = "source.ts"
 injection-regex = "ts"
 file-types = ["ts"]
-roots = ["tsconfig.json"]
+roots = ["pnpm-lock.yml", "package-lock.json", "yarn.lock"]
 language-servers = ["typescript", "eslint"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
@@ -36,7 +49,17 @@ scope = "source.tsx"
 injection-regex = "tsx"
 file-types = ["tsx"]
 roots = ["tsconfig.json", "next.config.js"]
-language-servers = ["react", "typescript", "tailwindcss", "eslint"]
+language-servers = ["typescript", "tailwindcss", "eslint", "emmet-ls"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx-deno"
+scope = "source.tsx"
+injection-regex = "tsx"
+file-types = ["tsx"]
+roots = ["deno.lock"]
+language-servers = ["deno", "tailwindcss", "eslint", "emmet-ls"]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
 
@@ -64,7 +87,7 @@ name = "html"
 scope = "source.html"
 injection-regex = "html"
 file-types = ["html"]
-language-servers = ["html", "eslint"]
+language-servers = ["html", "eslint", "emmet-ls"]
 formatter = { command = "prettier", args = ["--parser", "html"] }
 auto-format = true
 
@@ -105,4 +128,3 @@ config-path = ".prettierrc"
 enable = true
 global = true
 config-path = "eslint.config.js"
-

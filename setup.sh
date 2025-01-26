@@ -52,7 +52,7 @@ case ":$PATH:" in
 esac' >> "$HOME/.profile"
 . "$HOME/.profile"
 "$HB_PATH/pnpm" setup
-"$HB_PATH/pnpm" i -g @tailwindcss/language-server svelte-language-server \
+"$HB_PATH/pnpm" i -g @tailwindcss/language-server emmet-ls svelte-language-server \
 	turbo typescript-language-server vercel vscode-langservers-extracted
 
 # Install App Store Applications
