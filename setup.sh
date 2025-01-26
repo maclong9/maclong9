@@ -51,8 +51,10 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac' >> "$HOME/.profile"
-"$HB_PATH/pnpm" i -g @tailwindcss/language-server svelteserver typescript-language-server vscode-langservers-extracted
-rm -rf "$HOME/.profile"
+. "$HOME/.profile"
+"$HB_PATH/pnpm" setup
+"$HB_PATH/pnpm" i -g @tailwindcss/language-server svelte-language-server \
+	turbo typescript-language-server vercel vscode-langservers-extracted
 
 # Setup Cron Tasks
 (crontab -l 2>/dev/null; echo "0 10 * * * $HOME/.save-the-world.sh") | crontab -
