@@ -1,3 +1,6 @@
+# Set Editor
+EDITOR=hx
+
 # Aliases
 alias c='clear'
 alias g='git'

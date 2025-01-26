@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { cn } from '$lib';
-	import { buttonVariants, type Variant } from '$lib/components/ui/button';
-	import EnvelopeClosed from 'svelte-radix/EnvelopeClosed.svelte';
-	import GithubLogo from 'svelte-radix/GithubLogo.svelte';
-	import DarkToggle from './ui/dark-toggle.svelte';
+	import { buttonVariants, type ButtonVariant } from '$lib/components/ui/button';
+	import { Mail, Github } from 'lucide-svelte';
+	import LightSwitch from '$lib/components/ui/light-switch.svelte';
 
 	let { withLabel } = $props<{ withLabel?: boolean }>();
 
@@ -12,13 +11,13 @@
 			href: 'mailto:maclong9@icloud.com',
 			label: 'Email',
 			variant: 'secondary',
-			Icon: EnvelopeClosed
+			Icon: Mail
 		},
 		{
 			href: 'https://github.com/maclong9',
 			label: 'Github',
 			variant: 'primary',
-			Icon: GithubLogo
+			Icon: Github
 		}
 	];
 </script>
@@ -29,7 +28,7 @@
 			{href}
 			class={cn(
 				withLabel
-					? ['gap-2', buttonVariants({ variant: variant as Variant })]
+					? ['gap-2', buttonVariants({ variant: variant as ButtonVariant })]
 					: buttonVariants({ variant: 'ghost', size: 'icon' })
 			)}
 		>
@@ -40,6 +39,6 @@
 		</a>
 	{/each}
 	{#if !withLabel}
-		<DarkToggle />
+		<LightSwitch />
 	{/if}
 </nav>

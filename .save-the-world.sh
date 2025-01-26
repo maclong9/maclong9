@@ -12,8 +12,8 @@ run_curl() {
 }
 
 # URLs to process
-urls="https://www.ecosia.org/search?q=maclong9%2Fdots
-https://oceanhero.today/web?q=maclong9%2Fdots"
+urls="https://www.ecosia.org/search?q=githubmaclong9%2Fmaclong9
+https://oceanhero.today/web?q=githubmaclong9%2Fmaclong9"
 
 # Launch parallel tasks
 task_num=1
@@ -21,6 +21,4 @@ echo "$urls" | while read -r url; do
     run_curl "$url" "$task_num" &
     task_num=$((task_num + 1))
 done
-
-# Wait for all background tasks to complete
 wait

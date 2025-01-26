@@ -23,3 +23,8 @@ display-inlay-hints = true
 [editor.indent-guides]
 render = true
 
+[keys.normal]
+"C-left" = "jump_view_left"
+"C-down" = "jump_view_down"
+"C-up" = "jump_view_up"
+"C-right" = "jump_view_right"
