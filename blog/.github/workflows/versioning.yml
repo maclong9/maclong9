@@ -1,0 +1,64 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-changelog:
+    if: >-
+      !contains(github.event.head_commit.message, 'chore:') &&
+      !contains(github.event.head_commit.message, 'docs:') &&
+      !contains(github.event.head_commit.message, 'test:') &&
+      !contains(github.event.head_commit.message, 'ci:') &&
+      !contains(github.event.head_commit.message, 'build:') &&
+      !contains(github.event.head_commit.message, 'chore(main):') &&
+      (
+        contains(github.event.head_commit.message, 'release:') ||
+        contains(github.event.head_commit.message, 'fix:') ||
+        contains(github.event.head_commit.message, 'feat:') ||
+        contains(github.event.head_commit.message, 'feat!:')
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+
+  create-release:
+    if: contains(github.event.head_commit.message, 'chore(main):')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract Version and Changelog
+        id: extract-changelog
+        run: |
+          version=$(echo "${{ github.event.head_commit.message }}" | grep -oP 'chore\(main\): release \K[^\s]+')
+
+          # More robust changelog extraction
+          changelog=$(awk -v ver="$version" '
+              $0 ~ "## " ver " \\([0-9-]+\\)" {flag=1; next}
+              /^## [0-9.]+ \([0-9-]+\)/ {flag=0}
+              flag {print}
+          ' CHANGELOG.md | sed '/^$/d')
+
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A'}"
+          changelog="${changelog//$'\r'/'%0D'}"
+
+          echo "::set-output name=version::$version"
+          echo "::set-output name=changelog::$changelog"
+
+      - uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.extract-changelog.outputs.version }}
+          release_name: v${{ steps.extract-changelog.outputs.version }}
+          body: ${{ steps.extract-changelog.outputs.changelog }}

@@ -1,0 +1,32 @@
+name: branch-checks
+
+on:
+  pull_request:
+
+jobs:
+  check_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check merge to main
+        if: github.base_ref == 'main'
+        run: |
+          if [[ "${{ github.head_ref }}" != "staging" ]]; then
+            echo "ERROR: You can only merge to main from staging."
+            exit 1
+          fi
+
+      - name: Check merge to staging
+        if: github.base_ref == 'staging'
+        run: |
+          if [[ "${{ github.head_ref }}" != "development" ]]; then
+            echo "ERROR: You can only merge to staging from development."
+            exit 1
+          fi
+
+      - name: Check merge to development
+        if: github.base_ref == 'development'
+        run: |
+          if [[ "${{ github.head_ref }}" == "main" || "${{ github.head_ref }}" == "staging" ]]; then
+            echo "ERROR: You cannot merge to development from main or staging."
+            exit 1
+          fi

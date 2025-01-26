@@ -1,0 +1,113 @@
+{
+	"name": "svelte-template",
+	"private": true,
+	"version": "0.0.1",
+	"engines": {
+		"node": ">=22.13.0"
+	},
+	"type": "module",
+	"scripts": {
+		"build": "vite build",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "vite dev",
+		"format": "prettier --write .",
+		"format:check": "prettier --check",
+		"lint": "prettier --check . && eslint .",
+		"prepare": "husky",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.6.1",
+		"@commitlint/config-conventional": "^19.6.0",
+		"@commitlint/types": "^19.5.0",
+		"@eslint/compat": "^1.2.5",
+		"@eslint/js": "^9.18.0",
+		"@sveltejs/adapter-vercel": "^5.5.3",
+		"@sveltejs/enhanced-img": "^0.4.4",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@tailwindcss/container-queries": "^0.1.1",
+		"@tailwindcss/forms": "^0.5.10",
+		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/vite": "^4.0.0",
+		"autoprefixer": "^10.4.20",
+		"bits-ui": "^0.22.0",
+		"clsx": "^2.1.1",
+		"conventional-changelog-atom": "^5.0.0",
+		"eslint": "^9.18.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-svelte": "^2.46.1",
+		"globals": "^15.14.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.4.2",
+		"mdsvex": "^0.12.3",
+		"prettier": "^3.4.2",
+		"prettier-plugin-organize-imports": "^4.1.0",
+		"prettier-plugin-svelte": "^3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.10",
+		"rehype-callouts": "^1.4.1",
+		"rehype-slug": "^6.0.0",
+		"remark-toc": "^9.0.0",
+		"remark-unwrap-images": "^5.0.0",
+		"shiki": "^2.1.0",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.0.0",
+		"svelte-radix": "^2.0.1",
+		"tailwind-merge": "^2.6.0",
+		"tailwind-variants": "^0.3.1",
+		"tailwindcss": "^3.4.17",
+		"typescript": "^5.0.0",
+		"typescript-eslint": "^8.20.0",
+		"vite": "^5.4.11"
+	},
+	"lint-staged": {
+		"*.{js,ts,svelte}": [
+			"prettier --write",
+			"eslint --fix"
+		],
+		"*.{css,json,md,yml}": [
+			"prettier --write"
+		]
+	},
+	"eslintConfig": {
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:svelte/recommended",
+			"prettier",
+			"plugin:svelte/prettier"
+		],
+		"parser": "@typescript-eslint/parser",
+		"plugins": [
+			"@typescript-eslint",
+			"svelte"
+		],
+		"root": true,
+		"env": {
+			"browser": true,
+			"node": true
+		},
+		"overrides": [
+			{
+				"files": [
+					"**/*.svelte"
+				],
+				"parser": "svelte-eslint-parser",
+				"parserOptions": {
+					"parser": "@typescript-eslint/parser"
+				}
+			}
+		]
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		],
+		"parserPreset": "conventional-changelog-atom",
+		"formatter": "@commitlint/format"
+	},
+	"dependencies": {
+		"mode-watcher": "^0.5.1"
+	}
+}
