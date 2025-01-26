@@ -41,7 +41,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install Tooling and Apps
 HB_PATH="/opt/homebrew/bin"
 "$HB_PATH/brew" install --cask ghostty hammerspoon homerow hyperkey onyx
-"$HB_PATH/brew" install deno helix lazygit marksman mas node starship zoxide
+"$HB_PATH/brew" install deno fd ffmpeg fzf helix imagemagick jq lazygit marksman mas \
+	node poppler ripgrep starship yazi zoxide
 "$HB_PATH/brew" install pnpm
 
 # Setup pnpm and Install Language Servers
