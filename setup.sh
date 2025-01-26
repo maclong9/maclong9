@@ -44,7 +44,13 @@ HB_PATH="/opt/homebrew/bin"
 "$HB_PATH/brew" install deno helix marksman mas node starship zoxide
 "$HB_PATH/brew" install pnpm
 "$HB_PATH/mas" install 1527619437 1662217862
-"$HB_PATH/pnpm" setup
+
+# Setup pnpm and Install Language Servers
+export PNPM_HOME="/Users/maclong/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 "$HB_PATH/pnpm" i -g @tailwindcss/language-server svelteserver typescript-language-server vscode-langservers-extracted
 
 # Setup Cron Tasks
