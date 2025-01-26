@@ -41,7 +41,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install Tooling and Apps
 HB_PATH="/opt/homebrew/bin"
 "$HB_PATH/brew" install --cask ghostty hammerspoon homerow hyperkey onyx
-"$HB_PATH/brew" install deno helix marksman mas node zoxide
+"$HB_PATH/brew" install deno helix marksman mas node starship zoxide
 "$HB_PATH/brew" install pnpm
 "$HB_PATH/mas" install 1527619437 1662217862
 "$HB_PATH/pnpm" setup
