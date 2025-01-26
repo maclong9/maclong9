@@ -1,8 +1,8 @@
 theme = tokyonight_moon
 font-family = Liga SFMono Nerd Font
 font-size = 11
-window-padding-x = 8
-window-padding-y = 8
+window-padding-x = 5
+window-padding-y = 5
 window-padding-balance = true
 background-opacity = .95
 focus-follows-mouse = true
