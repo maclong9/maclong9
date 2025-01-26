@@ -1,5 +1,5 @@
 # Set Editor
-EDITOR=hx
+export EDITOR=/opt/homebrew/bin/hx
 
 # Aliases
 alias c='clear'
