@@ -41,9 +41,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install Tooling and Apps
 HB_PATH="/opt/homebrew/bin"
 "$HB_PATH/brew" install --cask ghostty hammerspoon homerow hyperkey onyx
-"$HB_PATH/brew" install deno helix marksman mas node starship zoxide
+"$HB_PATH/brew" install deno helix lazygit marksman mas node starship zoxide
 "$HB_PATH/brew" install pnpm
-"$HB_PATH/mas" install 1527619437 1662217862
 
 # Setup pnpm and Install Language Servers
 echo 'export PNPM_HOME="/Users/maclong/Library/pnpm"
@@ -55,6 +54,10 @@ esac' >> "$HOME/.profile"
 "$HB_PATH/pnpm" setup
 "$HB_PATH/pnpm" i -g @tailwindcss/language-server svelte-language-server \
 	turbo typescript-language-server vercel vscode-langservers-extracted
+
+# Install App Store Applications
+"$HB_PATH/mas" install 1527619437 1662217862 1622835804 1596283165 634148309 \
+	424389933 634159523 497799835 434290957 424390742
 
 # Setup Cron Tasks
 (crontab -l 2>/dev/null; echo "0 10 * * * $HOME/.save-the-world.sh") | crontab -
