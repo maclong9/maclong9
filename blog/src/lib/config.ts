@@ -7,7 +7,7 @@ export default {
 		url: 'https://maclong9.github.io/portfolio'
 	},
 	metadata: {
-				description:
+		description:
 			'I’m a passionate software engineer crafting exceptional digital experiences. I specialize in modern web development and Apple’s ecosystem, building responsive web apps, native iOS, and macOS apps. My blog shares insights, tips, and experiences with cutting-edge technologies like Svelte and SwiftUI.',
 		manifestPath: '/manifest.json'
 	}

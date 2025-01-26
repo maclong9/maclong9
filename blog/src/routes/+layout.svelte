@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { routeToSentenceCase } from '$lib';
-	import Navigation from '$lib/components/navigation.svelte';
+	import Navigation from '$lib/components/layout/navigation.svelte';
 	import config from '$lib/config';
 	import { ModeWatcher } from 'mode-watcher';
 	import '../app.css';
@@ -14,7 +14,6 @@
 <svelte:head>
 	<title>{pageTitle}</title>
 	<meta name="description" content={config.metadata.description} />
-	<!-- <meta name="theme-color" content={`rgb(${customTheme.properties['--color-primary-500']}`} /> -->
 
 	<!-- OpenGraph -->
 	<meta property="og:title" content={pageTitle} />

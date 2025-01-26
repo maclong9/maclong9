@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Navigation from '$lib/components/navigation.svelte';
+	import Navigation from '$lib/components/layout/navigation.svelte';
 	import PostCard from '$lib/components/post-card.svelte';
 	import config from '$lib/config';
 	import type { PageProps } from './$types';

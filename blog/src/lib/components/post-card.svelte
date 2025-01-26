@@ -1,9 +1,8 @@
 <script lang="ts">
-	import Clock from 'svelte-radix/Clock.svelte';
-	import Heart from 'svelte-radix/Heart.svelte';
+	import { Heart, Clock } from 'lucide-svelte';
 
 	let {
-		slug,
+		path,
 		image,
 		title,
 		category,
@@ -15,7 +14,7 @@
 </script>
 
 <a
-	href="/posts/{slug}"
+	href="/posts/{path}"
 	class="border-surface-200-800 divide-surface-200-800 preset-filled-surface-100-900 block max-w-md divide-y overflow-hidden border-[1px]"
 >
 	<header>

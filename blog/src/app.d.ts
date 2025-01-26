@@ -3,7 +3,7 @@
 declare global {
 	interface Post {
 		title: string;
-		slug: string;
+		path: string;
 		description: string;
 		image: string;
 		published: string;
