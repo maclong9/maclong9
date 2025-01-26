@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "Lil-Dank/lazygit", rev = "c82794f" }]
+deps = [{ use = "Lil-Dank/lazygit", rev = "c82794f" }, { use = "Rolv-Apneseth/starship", rev = "af8bf6f" }]
 
 [flavor]
 deps = []
