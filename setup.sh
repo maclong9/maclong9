@@ -46,16 +46,17 @@ HB_PATH="/opt/homebrew/bin"
 "$HB_PATH/mas" install 1527619437 1662217862
 
 # Setup pnpm and Install Language Servers
-export PNPM_HOME="/Users/maclong/Library/pnpm"
+echo 'export PNPM_HOME="/Users/maclong/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+esac' >> "$HOME/.profile"
 "$HB_PATH/pnpm" i -g @tailwindcss/language-server svelteserver typescript-language-server vscode-langservers-extracted
+rm -rf "$HOME/.profile"
 
 # Setup Cron Tasks
 (crontab -l 2>/dev/null; echo "0 10 * * * $HOME/.save-the-world.sh") | crontab -
-(crontab -l 2>/dev/null; echo "0 10 * * 0 open /Applications/OnyX.app") | crontab -
 (crontab -l 2>/dev/null; echo "0 10 * * 0 brew update && brew upgrade") | crontab -
+(crontab -l 2>/dev/null; echo "0 12 * * 0 open /Applications/OnyX.app") | crontab -
 
 printf "\033[1;32m✔\033[0m \033[1;37mConfiguration complete\033[0m\n"
