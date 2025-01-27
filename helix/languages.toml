@@ -46,3 +46,4 @@ language-servers = [
 ]
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 auto-format = true
+soft-wrap.enable = true
