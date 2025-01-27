@@ -1,6 +1,10 @@
 # Set Editor
 export EDITOR=/opt/homebrew/bin/hx
 
+# Setup Completions
+autoload -U compinit
+compinit -i
+
 # Aliases
 alias c='clear'
 alias g='git'
