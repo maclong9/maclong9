@@ -7,7 +7,7 @@ const config: Config = {
 	darkMode: ['class'],
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	safelist: ['dark'],
-	plugins: [typography],
+	plugins: [typography, tailwindcssAnimate],
 	theme: {
 		container: {
 			center: true,
@@ -91,8 +91,7 @@ const config: Config = {
 				'caret-blink': 'caret-blink 1.25s ease-out infinite'
 			}
 		}
-	},
-	plugins: [tailwindcssAnimate]
+	}
 };
 
 export default config;

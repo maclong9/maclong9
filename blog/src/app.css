@@ -73,4 +73,9 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+
+	a,
+	.prose a {
+		@apply no-underline;
+	}
 }

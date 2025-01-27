@@ -16,28 +16,29 @@
 		{
 			href: 'https://github.com/maclong9',
 			label: 'Github',
-			variant: 'primary',
 			Icon: Github
 		}
 	];
 </script>
 
-<nav class="flex items-center gap-1">
-	{#each links as { href, label, variant, Icon }}
-		<a
-			{href}
-			class={cn(
-				withLabel
-					? ['gap-2', buttonVariants({ variant: variant as ButtonVariant })]
-					: buttonVariants({ variant: 'ghost', size: 'icon' })
-			)}
-		>
-			<Icon />
-			{#if withLabel}
-				<span>{label}</span>
-			{/if}
-		</a>
-	{/each}
+<nav class="flex items-center gap-4">
+	<div class={cn(withLabel && 'space-x-2')}>
+		{#each links as { href, label, variant, Icon }}
+			<a
+				{href}
+				class={cn(
+					withLabel
+						? ['gap-2', buttonVariants({ variant: variant as ButtonVariant })]
+						: buttonVariants({ variant: 'ghost', size: 'icon' })
+				)}
+			>
+				<Icon />
+				{#if withLabel}
+					<span>{label}</span>
+				{/if}
+			</a>
+		{/each}
+	</div>
 	{#if !withLabel}
 		<LightSwitch />
 	{/if}
