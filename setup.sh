@@ -57,8 +57,10 @@ esac' >> "$HOME/.profile"
 	turbo typescript-language-server vercel vscode-langservers-extracted
 
 # Install App Store Applications
+if [ "$(uname -s)" = "Darwin" ]; then
 "$HB_PATH/mas" install 1527619437 1662217862 1622835804 1596283165 634148309 \
 	424389933 634159523 497799835 434290957 424390742
+fi
 
 # Setup Cron Tasks
 (crontab -l 2>/dev/null; echo "0 10 * * * $HOME/.save-the-world.sh") | crontab -
