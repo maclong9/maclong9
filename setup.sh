@@ -4,7 +4,7 @@
 # Usage: curl -sSL https://raw.githubusercontent.com/maclong9/dots/refs/heads/main/setup.sh | sh
 
 # Exit on error, undefined variables, and pipe failures
-set -euo pipefail
+set -euo
 
 # Cleanup function to restore system state on non-zero exit
 cleanup() {
@@ -67,7 +67,6 @@ printf "\033[1;34m→\033[0m \033[1;37mInstalling development tools\033[0m\n"
 # Install Homebrew
 if ! command -v brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "${HOME}/.zprofile"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -79,12 +78,7 @@ BREW_PREFIX="/opt/homebrew/bin"
 "${BREW_PREFIX}/ya" pack -a Rolv-Apneseth/starship
 
 # Configure pnpm
-echo 'export PNPM_HOME="/Users/maclong/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac' >> "$HOME/.profile"
-. "$HOME/.profile"
+export PATH="$HOME/Library/pnpm:$PATH"
 
 # Install language servers
 "${BREW_PREFIX}/pnpm" setup
