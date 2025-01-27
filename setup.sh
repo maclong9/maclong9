@@ -69,18 +69,17 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # Install applications and tools
-BREW_PREFIX="/opt/homebrew/bin"
-"${BREW_PREFIX}/brew" install --cask ghostty hammerspoon homerow hyperkey onyx
-"${BREW_PREFIX}/brew" install fzf helix lazygit mas node pnpm starship yazi zoxide
-"${BREW_PREFIX}/ya" pack -a Lil-Dank/lazygit
-"${BREW_PREFIX}/ya" pack -a Rolv-Apneseth/starship
+/opt/homebrew/bin/brew install --cask ghostty hammerspoon homerow hyperkey onyx
+/opt/homebrew/bin/brew install fzf helix lazygit mas node pnpm starship yazi zoxide
+/opt/homebrew/bin/ya pack -a Lil-Dank/lazygit
+/opt/homebrew/bin/ya pack -a Rolv-Apneseth/starship
 
 # Configure pnpm
 export PATH="$HOME/Library/pnpm:$PATH"
 
 # Install language servers
-"${BREW_PREFIX}/pnpm" setup
-"${BREW_PREFIX}/pnpm" install -g \
+/opt/homebrew/bin/pnpm setup
+/opt/homebrew/bin/pnpm install -g \
     @tailwindcss/language-server \
     emmet-ls \
     svelte-language-server \
@@ -91,9 +90,9 @@ export PATH="$HOME/Library/pnpm:$PATH"
 
 # Install App Store applications
 if [ "$(uname -s)" = "Darwin" ]; then
-    "${BREW_PREFIX}/mas" install \
+    /opt/homebrew/bin/mas install \
         1527619437 1662217862 1596283165 634148309 424389933 \
-        634159523 497799835 434290957 424390742
+        634159523 497799835 434290957 424390742 1289583905
 fi
 
 printf "\033[1;32m✔\033[0m \033[1;37mConfiguration complete\033[0m\n"
