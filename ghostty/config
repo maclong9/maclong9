@@ -5,7 +5,6 @@ window-padding-x = 5
 window-padding-y = 5
 window-padding-balance = true
 background-opacity = .95
-focus-follows-mouse = true
 auto-update = download
 macos-option-as-alt = true
 keybind = global:cmd+§=toggle_quick_terminal
