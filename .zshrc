@@ -38,7 +38,7 @@ mkcd() {
 	mkdir -p "$1" && cd "$1" || return
 }
 
-eval $(/opt/homebrew/bin/brew shellenv)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
