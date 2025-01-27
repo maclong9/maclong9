@@ -4,7 +4,6 @@
 # Usage: curl -sSL https://raw.githubusercontent.com/maclong9/dots/refs/heads/main/setup.sh | sh
 
 # Cleanup function to restore system state on non-zero exit
-set -x
 trap 'cleanup' EXIT
 cleanup() {
     if [ $? -ne 0 ]; then
