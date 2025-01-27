@@ -23,11 +23,22 @@ kp() {
 	done
 }
 
+# Yazi Wrapper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # Make Directory and Navigate Into
 mkcd() {
 	mkdir -p "$1" && cd "$1" || return
 }
 
+eval $(/opt/homebrew/bin/brew shellenv)
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
