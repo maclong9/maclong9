@@ -8,7 +8,6 @@ auto-format = true
 [[language]]
 name = "markdown"
 file-types = ["md"]
-language-servers = ["marksman"]
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
 auto-format = true
 soft-wrap.enable = true
