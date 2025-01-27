@@ -50,6 +50,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
         done
     fi
     
+    # Accept Xcode license
     if ! /usr/bin/xcrun clang >/dev/null 2>&1; then
         sudo xcodebuild -license accept
     fi
@@ -57,7 +58,6 @@ fi
 
 # Setup cron tasks
 printf "\033[1;34m→\033[0m \033[1;37mConfiguring scheduled tasks\033[0m\n"
-(crontab -l 2>/dev/null || true; echo "0 10 * * * ${HOME}/.save-the-world.sh") | crontab -
 (crontab -l 2>/dev/null; echo "0 10 * * 0 brew update && brew upgrade") | crontab -
 (crontab -l 2>/dev/null; echo "0 12 * * 0 open /Applications/OnyX.app") | crontab -
 
@@ -72,25 +72,23 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # Install applications and tools
-BREW_PREFIX="/opt/homebrew"
-"${BREW_PREFIX}/bin/brew" install --cask ghostty hammerspoon homerow hyperkey onyx
-"${BREW_PREFIX}/bin/brew" install fzf helix lazygit mas node pnpm starship yazi zoxide
+BREW_PREFIX="/opt/homebrew/bin"
+"${BREW_PREFIX}/brew" install --cask ghostty hammerspoon homerow hyperkey onyx
+"${BREW_PREFIX}/brew" install fzf helix lazygit mas node pnpm starship yazi zoxide
+"${BREW_PREFIX}/ya" pack -a Lil-Dank/lazygit
+"${BREW_PREFIX}/ya" pack -a Rolv-Apneseth/starship
 
 # Configure pnpm
-if ! grep -q PNPM_HOME "${HOME}/.profile" 2>/dev/null; then
-    cat >> "${HOME}/.profile" << 'EOF'
-export PNPM_HOME="${HOME}/Library/pnpm"
-case ":${PATH}:" in
-    *":${PNPM_HOME}:"*) ;;
-    *) export PATH="${PNPM_HOME}:${PATH}" ;;
-esac
-EOF
-fi
-. "${HOME}/.profile"
+echo 'export PNPM_HOME="/Users/maclong/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac' >> "$HOME/.profile"
+. "$HOME/.profile"
 
-# Setup pnpm and install language servers
-"${BREW_PREFIX}/bin/pnpm" setup
-"${BREW_PREFIX}/bin/pnpm" install -g \
+# Install language servers
+"${BREW_PREFIX}/pnpm" setup
+"${BREW_PREFIX}/pnpm" install -g \
     @tailwindcss/language-server \
     emmet-ls \
     svelte-language-server \
@@ -101,7 +99,7 @@ fi
 
 # Install App Store applications
 if [ "$(uname -s)" = "Darwin" ]; then
-    "${BREW_PREFIX}/bin/mas" install \
+    "${BREW_PREFIX}/mas" install \
         1527619437 1662217862 1596283165 634148309 424389933 \
         634159523 497799835 434290957 424390742
 fi
