@@ -1,4 +1,11 @@
 [[language]]
+name = "css"
+file-types = ["css"]
+language-servers = ["tailwindcss-language-server"]
+formatter = { command = "prettier", args = ["--parser", "css"] }
+auto-format = true
+
+[[language]]
 name = "markdown"
 file-types = ["md"]
 language-servers = ["marksman"]
