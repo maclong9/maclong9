@@ -1,3 +1,0 @@
-inherits="tokyonight_moon"
-"ui.background" = { fg="foreground", bg="rgba(0, 0, 0, 0)" }
-"ui.text" = {}

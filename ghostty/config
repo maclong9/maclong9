@@ -1,4 +1,4 @@
-theme = tokyonight_moon
+theme = light:tokyonight_moon,dark:vitesse-dark
 font-family = Liga SFMono Nerd Font
 font-size = 11
 window-padding-x = 5
