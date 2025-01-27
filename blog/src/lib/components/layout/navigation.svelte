@@ -10,7 +10,7 @@
 		{
 			href: 'mailto:maclong9@icloud.com',
 			label: 'Email',
-			variant: 'secondary',
+			variant: 'outline',
 			Icon: Mail
 		},
 		{
