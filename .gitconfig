@@ -46,7 +46,6 @@
   }; f"
 
 [core]
-  editor = "vim"
   excludeFile = "$HOME/.gitignore"
 
 [init]
