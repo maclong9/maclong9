@@ -12,4 +12,4 @@ keybind = global:alt+h=goto_split:left
 keybind = global:alt+j=goto_split:bottom
 keybind = global:alt+k=goto_split:top
 keybind = global:alt+l=goto_split:right
-keybind = global:alt+3=text:#
+keybind = alt+3=text:#
