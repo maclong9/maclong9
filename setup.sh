@@ -3,10 +3,8 @@
 # Downloads configuration files and sets up development environment with necessary tooling
 # Usage: curl -sSL https://raw.githubusercontent.com/maclong9/dots/refs/heads/main/setup.sh | sh
 
-# Exit on error, undefined variables, and pipe failures
-set -euo
-
 # Cleanup function to restore system state on non-zero exit
+trap 'cleanup' EXIT
 cleanup() {
     if [ $? -ne 0 ]; then
         printf "\033[1;31m✗\033[0m \033[1;37mSetup failed, restoring system state\033[0m\n"
