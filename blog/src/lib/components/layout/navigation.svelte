@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { cn } from '$lib';
 	import { buttonVariants, type ButtonVariant } from '$lib/components/ui/button';
 	import { Mail, Github } from 'lucide-svelte';
 	import LightSwitch from '$lib/components/ui/light-switch.svelte';
@@ -22,15 +21,13 @@
 </script>
 
 <nav class="flex items-center gap-4">
-	<div class={cn(withLabel && 'space-x-2')}>
+	<div class={withLabel ? 'space-x-2' : '-space-x-1'}>
 		{#each links as { href, label, variant, Icon }}
 			<a
 				{href}
-				class={cn(
-					withLabel
-						? ['gap-2', buttonVariants({ variant: variant as ButtonVariant })]
-						: buttonVariants({ variant: 'ghost', size: 'icon' })
-				)}
+				class={withLabel
+					? ['gap-2', buttonVariants({ variant: variant as ButtonVariant })]
+					: buttonVariants({ variant: 'ghost', size: 'icon' })}
 			>
 				<Icon />
 				{#if withLabel}
