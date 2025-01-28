@@ -37,6 +37,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
 	# Install and configure Developer Tools
 	if ! xcode-select -p >/dev/null 2>&1; then
 		xcode-select --install
+		 
 		# Wait for xcode-select installation to complete
 		until xcode-select -p >/dev/null 2>&1; do
 			sleep 1
@@ -68,6 +69,8 @@ fi
 /opt/homebrew/bin/brew install fzf helix lazygit mas node pnpm shfmt starship yazi zoxide
 /opt/homebrew/bin/ya pack -a Lil-Dank/lazygit
 /opt/homebrew/bin/ya pack -a Rolv-Apneseth/starship
+/opt/homebrew/bin/ya pack -a yazi-rs/plugins:git
+
 
 # Configure pnpm
 echo 'export PNPM_HOME="/Users/maclong/Library/pnpm"
