@@ -1,4 +1,5 @@
-# Set Editor
+# Set Environment Variables
+export PATH="/Users/maclong/.bun/bin:$PATH"
 export EDITOR=hx
 
 # Setup Completions
@@ -30,10 +31,3 @@ mkcd() {
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
-# pnpm Setup
-export PNPM_HOME="/Users/maclong/Library/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
