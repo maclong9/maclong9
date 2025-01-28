@@ -1,5 +1,5 @@
 # Set Editor
-export EDITOR=/opt/homebrew/bin/hx
+export EDITOR=hx
 
 # Setup Completions
 autoload -U compinit
