@@ -66,23 +66,13 @@ fi
 
 # Install applications and tools
 /opt/homebrew/bin/brew install --cask ghostty homerow hyperkey onyx
-/opt/homebrew/bin/brew install fzf helix lazygit mas node pnpm shfmt starship yazi zoxide
+/opt/homebrew/bin/brew install bun caniuse fzf helix lazygit mas node shfmt starship yazi zoxide
 /opt/homebrew/bin/ya pack -a Lil-Dank/lazygit
 /opt/homebrew/bin/ya pack -a Rolv-Apneseth/starship
 /opt/homebrew/bin/ya pack -a yazi-rs/plugins:git
 
-
-# Configure pnpm
-echo 'export PNPM_HOME="/Users/maclong/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac' >>"$HOME/.profile"
-. "$HOME/.profile"
-/opt/homebrew/bin/pnpm setup
-
 # Install language servers
-/opt/homebrew/bin/pnpm install -g \
+/opt/homebrew/bin/bun install -g \
 	@tailwindcss/language-server \
 	emmet-ls \
 	svelte-language-server \
@@ -90,7 +80,6 @@ esac' >>"$HOME/.profile"
 	typescript-language-server \
 	vercel \
 	vscode-langservers-extracted
-rm -rf "$HOME/.profile"
 
 # Install App Store applications
 if [ "$(uname -s)" = "Darwin" ]; then
