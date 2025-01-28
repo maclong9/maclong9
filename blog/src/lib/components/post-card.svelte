@@ -1,45 +1,54 @@
 <script lang="ts">
 	import { Heart, Clock } from 'lucide-svelte';
+	import {
+		Card,
+		CardContent,
+		CardDescription,
+		CardFooter,
+		CardHeader,
+		CardTitle
+	} from '$lib/components/ui/card';
+	import { Button } from '$lib/components/ui/button';
+	import { Avatar, AvatarFallback, AvatarImage } from '$lib/components/ui/avatar';
 
-	let {
-		path,
-		image,
-		title,
-		category,
-		description,
-		likes,
-		readTime,
-		published
-	}: Omit<Post, 'tags'> = $props();
+	let { path, image, title, category, description, likes, readTime, published } = $props<{
+		path: string;
+		image: string;
+		title: string;
+		category: string;
+		description: string;
+		likes: number;
+		readTime: number;
+		published: string;
+	}>();
 </script>
 
-<a
-	href="/posts/{path}"
-	class="border-surface-200-800 divide-surface-200-800 preset-filled-surface-100-900 block max-w-md divide-y overflow-hidden border-[1px]"
->
-	<header>
-		<img src={image} class="aspect-[21/9] w-full grayscale hue-rotate-90" alt="{title} cover" />
-	</header>
-	<article class="space-y-4 p-4">
-		<div>
-			<h2>{category}</h2>
-			<h3>{title}</h3>
+<Card class="w-full max-w-sm">
+	<CardHeader>
+		<img
+			src={image || '/placeholder.svg'}
+			alt={title}
+			class="h-48 w-full rounded-t-lg object-cover"
+		/>
+		<CardTitle>{title}</CardTitle>
+		<CardDescription>{category}</CardDescription>
+	</CardHeader>
+	<CardContent>
+		<p class="text-sm text-gray-600">{description}</p>
+	</CardContent>
+	<CardFooter class="flex items-center justify-between">
+		<div class="flex items-center space-x-2">
+			<Button variant="ghost" size="icon">
+				<Heart class="mr-1 h-4 w-4" />
+				<span>{likes}</span>
+			</Button>
+			<div class="flex items-center text-sm text-gray-500">
+				<Clock class="mr-1 h-4 w-4" />
+				<span>{readTime} min read</span>
+			</div>
 		</div>
-		<p class="opacity-60">
-			{description}
-		</p>
-	</article>
-	<footer class="flex items-center justify-between gap-4 p-4">
-		<small class="flex items-center gap-2 opacity-60">
-			<span class="space-x-2">
-				<Heart />
-				{likes}
-			</span>
-			<span class="spacee-x-2">
-				<Clock />
-				{readTime} min read
-			</span>
-		</small>
-		<small class="opacity-60">On {new Date(published).toISOString()}</small>
-	</footer>
-</a>
+		<div class="text-sm text-gray-500">
+			{new Date(published).toISOString()}
+		</div>
+	</CardFooter>
+</Card>`

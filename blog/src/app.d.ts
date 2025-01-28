@@ -15,4 +15,28 @@ declare global {
 	namespace App {}
 }
 
+declare module 'mdsvex' {
+	export interface MdsvexOptions {
+		extensions?: string[];
+		layout?: string;
+		frontmatter?: {
+			type?: 'yaml' | 'toml';
+			marker?: string;
+		};
+		smartypants?: boolean;
+		remarkPlugins?: any[];
+		rehypePlugins?: any[];
+	}
+
+	export function compile(
+		content: string,
+		options?: MdsvexOptions
+	): Promise<{
+		code: string;
+		data: {
+			fm: Record<string, unknown>;
+		};
+	}>;
+}
+
 export {};

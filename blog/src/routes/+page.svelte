@@ -2,8 +2,9 @@
 	import Navigation from '$lib/components/layout/navigation.svelte';
 	import PostCard from '$lib/components/post-card.svelte';
 	import config from '$lib/config';
-	import type { PageProps } from './$types';
-	let { data }: PageProps = $props();
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <section id="about" class="mb-12">
@@ -15,16 +16,9 @@
 
 <section id="posts">
 	<h2 class="mb-4">Latest Posts</h2>
-	<div class="grid gap-4">
-		<PostCard
-			path="/posts/hello-world"
-			image="https://source.unsplash.com/random/800x600"
-			title="Hello World"
-			category="Web"
-			description="This is a description of the post"
-			likes={10}
-			readTime={5}
-			published={new Date().toISOString()}
-		/>
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+		{#each data.posts as post (post.path)}
+			<PostCard {...post} />
+		{/each}
 	</div>
 </section>
