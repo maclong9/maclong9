@@ -1,0 +1,8 @@
+theme = "transparent"
+editor.line-number = "relative"
+editor.file-picker.hidden = false
+editor.indent-guides.render = true
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
